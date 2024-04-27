@@ -22,10 +22,10 @@ jobs:
 
       - name: check package type
         run: |
-          PKGTYPE="$(./ndk-pkg info-available gh pkgtype)"
+          PKGTYPE="$(./ndk-pkg info-available ${{ matrix.pkg }} pkgtype)"
 
           if [ -z "$PKGTYPE" ] ; then
-            BSYSTEM="$(./ndk-pkg info-available gh bsystem)"
+            BSYSTEM="$(./ndk-pkg info-available ${{ matrix.pkg }} bsystem)"
             
             if [ "$BSYSTEM" = go ] ; then
               echo "go package can not be installed as fully statically linked executables"
