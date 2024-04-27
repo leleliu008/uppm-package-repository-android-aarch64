@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        pkg: [aria2, axel, base16, base64, bash, bat, bison, bc, bsdtar, bzip2, b3sum, cargo-c, cmake, coreutils, ctop, curl, curlie, darkhttpd, dua, duf, dufs, dust, diffutils, dog, dos2unix, easyutils, ed, exa, fd, figlet, file, findutils, flex, fzf, gawk, gettext-tools, gh, gindent, git, glib-tools, glow, gm4, gmake, gn, gnupg, go-md2man, gogs, golang, gotop, gotty, gperf, grep, grpc-plugins, gsed, gtar, gzip, hugo, jj, jq, lazygit, libxml2-utils, lolcat, lsd, lz4, lzip, mediainfo, mosh, mpg123, nasm, ninja, nushell, openssl, patch, patchelf, pigz, p7zip, pkg-config, pkgconf, pngquant, proot, putty, qpdf, qrencode, re2c, ripgrep, rsync, rtmpdump, sqlite3, starship, strace, svn-lite, swig, sysinfo, tcpdump, tealdeer, tig, tmux, tree, uctags, unrar, unzip, uppm, util-linux, volta, wget, xmake, xsltproc, xxd, xz, yasm, youtubedr, yq, zip, zopfli, zstd, zoxide]
+        pkg: [aria2, axel, base16, base64, bash, bat, bison, bc, bsdtar, bzip2, b3sum, cargo-c, cmake, coreutils, curl, darkhttpd, dua, dufs, dust, diffutils, dog, dos2unix, ed, exa, fd, figlet, file, findutils, flex, gawk, gettext-tools, gindent, git, glib-tools, gm4, gmake, gn, gnupg, golang, gperf, grep, gsed, gtar, gzip, hugo, jj, jq, libxml2-utils, lolcat, lsd, lz4, lzip, mediainfo, mpg123, nasm, ninja, nushell, openssl, patch, patchelf, pigz, p7zip, pkg-config, pkgconf, pngquant, putty, qpdf, qrencode, re2c, ripgrep, rsync, rtmpdump, sqlite3, starship, svn-lite, swig, sysinfo, tcpdump, tealdeer, tig, tmux, tree, uctags, unrar, uppm, util-linux, wget, xsltproc, xxd, xz, yasm, zopfli, zstd, zoxide]
 
     runs-on: ubuntu-latest
 
@@ -22,20 +22,18 @@ jobs:
 
       - name: check package type
         run: |
+          BSYSTEM="$(./ndk-pkg info-available ${{ matrix.pkg }} bsystem)"
+
+          if [ "$BSYSTEM" = go ] ; then
+            echo "go package can not be installed as fully statically linked executables"
+            exit 1
+          fi
+
           PKGTYPE="$(./ndk-pkg info-available ${{ matrix.pkg }} pkgtype)"
 
-          if [ -z "$PKGTYPE" ] ; then
-            BSYSTEM="$(./ndk-pkg info-available ${{ matrix.pkg }} bsystem)"
-            
-            if [ "$BSYSTEM" = go ] ; then
-              echo "go package can not be installed as fully statically linked executables"
-              exit 1
-            fi
-          else
-            if [ "$PKGTYPE" != exe ] ; then
-              echo "package type is not exe"
-              exit 1
-            fi
+          if [ -n "$PKGTYPE" ] && [ "$PKGTYPE" != exe ] ; then
+            echo "package type is not exe"
+            exit 1
           fi
 
       - run: ./ndk-pkg install android-34-arm64-v8a/${{ matrix.pkg }} --exe=fsle
