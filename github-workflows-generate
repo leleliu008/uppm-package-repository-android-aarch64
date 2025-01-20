@@ -25,10 +25,12 @@ do
         PKGNAME="${f%.yml}"
 
         case $PKGNAME in
-            lib*) ;;
-            *lib) ;;
-            *-dev);;
-            d8)   ;; 
+            lib*) continue ;;
+            *lib) continue ;;
+            *-dev) continue ;;
+            d8)   continue ;;
+            calc) continue ;;
+            fortune) continue ;;
                *)
     
                 BSYSTEM="$(sed -n '/^bsystem:/p' "$f" | cut -c10-)"
