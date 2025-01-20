@@ -2,4 +2,4 @@ summary: a toolset that lets you implement parts of your Android app in native c
 webpage: https://developer.android.com/ndk
 version: r27b
 bin-url: https://github.com/lzhiyong/termux-ndk/releases/download/android-ndk/android-ndk-r27b-aarch64.zip
-bin-sha: ad73c0370f0b0a87d1671ed2fd5a9ac9acfd1eb5c43a7fbfbd330f85d19dd632
+bin-sha: 3a5771dd037432bb3cac02a73472ffe6f61daa087bfdb3711289bf1282e74e2a
