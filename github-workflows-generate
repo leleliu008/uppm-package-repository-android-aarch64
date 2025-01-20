@@ -113,48 +113,41 @@ do
 
     runs-on: ubuntu-latest
 
-    container: fpliu/ndk-pkg
+    container: ubuntu:24.04
 
     steps:
+      - run: apt -y update
+      - run: apt -y install curl
+
       - run: curl -LO https://raw.githubusercontent.com/leleliu008/ndk-pkg/master/ndk-pkg
       - run: chmod a+x ndk-pkg
-      - run: mv ndk-pkg /usr/bin/ndk-pkg
 
-      - run: /usr/bin/ndk-pkg about
-      - run: /usr/bin/ndk-pkg setup
-      - run: /usr/bin/ndk-pkg update
-      - run: /usr/bin/ndk-pkg install android-34-arm64-v8a/\${{ matrix.pkg }} --static
+      - run: ./ndk-pkg about
+      - run: ./ndk-pkg setup
+      - run: ./ndk-pkg update
+      - run: ./ndk-pkg install android-35-arm64-v8a/\${{ matrix.pkg }} --static
+      - run: ./ndk-pkg bundle  android-35-arm64-v8a/\${{ matrix.pkg }} .tar.xz --exclude include/ --exclude lib/
 
-      - name: pack
+      - name: generate \${{ matrix.pkg }}.yml
         run: |
           set -ex
 
-          /usr/bin/ndk-pkg pack android-34-arm64-v8a/\${{ matrix.pkg }} --exclude include/ --exclude lib/
+          PACKAGE_SUMMARY="\$(./ndk-pkg info-installed android-34-arm64-v8a/\${{ matrix.pkg }} summary)"
+          PACKAGE_WEB_URL="\$(./ndk-pkg info-installed android-34-arm64-v8a/\${{ matrix.pkg }} web-url)"
+          PACKAGE_VERSION="\$(./ndk-pkg info-installed android-34-arm64-v8a/\${{ matrix.pkg }} version)"
 
-          PACKAGE_FILENAME="\$(ls *.tar.xz)"
+          PACKAGE_FILENAME="\$(ls *-android-aarch64.release.tar.xz)"
+          PACKAGE_BIN_SHA="\$(sha256sum "\$PACKAGE_FILENAME" | cut -d ' ' -f1)"
 
-          case \$PACKAGE_FILENAME in
-              *-android-aarch64.tar.xz)
-                  PACKAGE_SUMMARY="\$(/usr/bin/ndk-pkg info-installed android-34-arm64-v8a/\${{ matrix.pkg }} summary)"
-                  PACKAGE_WEB_URL="\$(/usr/bin/ndk-pkg info-installed android-34-arm64-v8a/\${{ matrix.pkg }} web-url)"
-                  PACKAGE_VERSION="\$(/usr/bin/ndk-pkg info-installed android-34-arm64-v8a/\${{ matrix.pkg }} version)"
+          PACKAGE_BIN_URL="https://github.com/\${{ github.repository }}/releases/download/@TAGNAME@/\$PACKAGE_FILENAME"
 
-                  PACKAGE_BIN_SHA="\$(sha256sum "\$PACKAGE_FILENAME" | cut -d ' ' -f1)"
-
-                  PACKAGE_BIN_URL="https://github.com/\${{ github.repository }}/releases/download/@TAGNAME@/\$PACKAGE_FILENAME"
-
-                  cat > \${{ matrix.pkg }}.yml <<EOF
+          cat > \${{ matrix.pkg }}.yml <<EOF
           summary: \$PACKAGE_SUMMARY
           webpage: \$PACKAGE_WEB_URL
           version: \$PACKAGE_VERSION
           bin-url: \$PACKAGE_BIN_URL
           bin-sha: \$PACKAGE_BIN_SHA
           EOF
-                  ;;
-              *)
-                  touch a.tar.xz
-                  touch a.yml
-          esac
 
       - uses: actions/upload-artifact@v4
         with:
