@@ -32,9 +32,9 @@ jobs:
         run: |
           set -ex
 
-          PACKAGE_SUMMARY="$(./ndk-pkg info-installed android-34-arm64-v8a/${{ matrix.pkg }} summary)"
-          PACKAGE_WEB_URL="$(./ndk-pkg info-installed android-34-arm64-v8a/${{ matrix.pkg }} web-url)"
-          PACKAGE_VERSION="$(./ndk-pkg info-installed android-34-arm64-v8a/${{ matrix.pkg }} version)"
+          PACKAGE_SUMMARY="$(./ndk-pkg info-installed android-35-arm64-v8a/${{ matrix.pkg }} summary)"
+          PACKAGE_WEB_URL="$(./ndk-pkg info-installed android-35-arm64-v8a/${{ matrix.pkg }} web-url)"
+          PACKAGE_VERSION="$(./ndk-pkg info-installed android-35-arm64-v8a/${{ matrix.pkg }} version)"
 
           PACKAGE_FILENAME="$(ls *-android-aarch64.release.tar.xz)"
           PACKAGE_BIN_SHA="$(sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
@@ -83,9 +83,9 @@ jobs:
         run: |
           set -ex
 
-          PACKAGE_SUMMARY="$(./ndk-pkg info-installed android-34-arm64-v8a/${{ matrix.pkg }} summary)"
-          PACKAGE_WEB_URL="$(./ndk-pkg info-installed android-34-arm64-v8a/${{ matrix.pkg }} web-url)"
-          PACKAGE_VERSION="$(./ndk-pkg info-installed android-34-arm64-v8a/${{ matrix.pkg }} version)"
+          PACKAGE_SUMMARY="$(./ndk-pkg info-installed android-35-arm64-v8a/${{ matrix.pkg }} summary)"
+          PACKAGE_WEB_URL="$(./ndk-pkg info-installed android-35-arm64-v8a/${{ matrix.pkg }} web-url)"
+          PACKAGE_VERSION="$(./ndk-pkg info-installed android-35-arm64-v8a/${{ matrix.pkg }} version)"
 
           PACKAGE_FILENAME="$(ls *-android-aarch64.release.tar.xz)"
           PACKAGE_BIN_SHA="$(sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
