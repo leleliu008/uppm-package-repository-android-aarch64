@@ -1,0 +1,5 @@
+summary: GNU Pretty Good Privacy (PGP) package
+webpage: https://www.gnupg.org
+version: 2.4.5
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/gnupg-2.4.5-android-aarch64.release.tar.xz
+bin-sha: 9fe16a67c483b0403849a5081072fc0de490af5f1be3b86282ed4886c9b9c236

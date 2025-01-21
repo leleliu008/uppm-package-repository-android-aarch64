@@ -1,0 +1,5 @@
+summary: LZMA-based compression program similar to gzip or bzip2
+webpage: https://www.nongnu.org/lzip
+version: 1.24.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/lzip-1.24.1-android-aarch64.release.tar.xz
+bin-sha: bb3ecc1cf7ac197abcb14159df307a62946a05f690371bca3527552e2163d422

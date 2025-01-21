@@ -1,0 +1,5 @@
+summary: AV1 encoder
+webpage: https://gitlab.com/AOMediaCodec/SVT-AV1
+version: 2.1.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/svt-av1-2.1.2-android-aarch64.release.tar.xz
+bin-sha: 12d6e059548ada6dfc6fe6c92919adb9eb085fa37069712634f89181a0ffbb44

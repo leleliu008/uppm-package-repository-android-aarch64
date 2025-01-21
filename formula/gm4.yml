@@ -1,0 +1,5 @@
+summary: Macro processing language
+webpage: https://www.gnu.org/software/m4
+version: 1.4.19
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/gm4-1.4.19-android-aarch64.release.tar.xz
+bin-sha: 1b0da0a2b71c0675c6f01220922ee901960b6b64122bd1cc065f9c3cd0cd957b

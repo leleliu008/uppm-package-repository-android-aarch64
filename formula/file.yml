@@ -1,0 +1,5 @@
+summary: A command-line tool to determine file types
+webpage: https://www.darwinsys.com/file
+version: 5.45
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/file-5.45-android-aarch64.release.tar.xz
+bin-sha: e852aaa6c6918273df7eacec989b48eeb8c5d314c59cece97cfa00bd9a015db7

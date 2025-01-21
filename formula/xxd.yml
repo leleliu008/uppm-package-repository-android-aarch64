@@ -1,0 +1,5 @@
+summary: A command-line tool to create a hex dump of a given file or standard input
+webpage: https://www.vim.org/
+version: 9.1.0500
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/xxd-9.1.0500-android-aarch64.release.tar.xz
+bin-sha: ab33eb4b3378aa5c3a5f54cbc082fe498978ea07b6804685e657e7a33e1fc468

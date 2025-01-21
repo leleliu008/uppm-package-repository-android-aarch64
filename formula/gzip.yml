@@ -1,0 +1,5 @@
+summary: A popular data compression program developed by GNU
+webpage: https://www.gnu.org/software/gzip
+version: 1.13
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/gzip-1.13-android-aarch64.release.tar.xz
+bin-sha: 4abf7b0d2a94f9f4f8d9fee440b4bd63caa141492bfca850498d543096c50083

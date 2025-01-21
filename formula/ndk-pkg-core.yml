@@ -1,0 +1,5 @@
+summary: core utils for ndk-pkg
+webpage: https://github.com/leleliu008/ndk-pkg
+version: 2025.01.21
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/ndk-pkg-core-2025.01.21-android-aarch64.release.tar.xz
+bin-sha: 72630f321f813abaf5671728ee29bca556523b03bf6f457c9affcce13138c97b

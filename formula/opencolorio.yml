@@ -1,0 +1,5 @@
+summary: Color management solution geared towards motion picture production
+webpage: https://opencolorio.org/
+version: 2.3.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-android-aarch64/releases/download/2025.01.21/opencolorio-2.3.2-android-aarch64.release.tar.xz
+bin-sha: e477dfbcb29b9c8d9ae52b9b088ecf9a8849a322df61c6eda909d79e93059476
